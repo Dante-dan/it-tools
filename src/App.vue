@@ -19,7 +19,6 @@ syncRef(
   useStorage('locale', locale),
 );
 
-  
 </script>
 
 <template>
