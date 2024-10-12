@@ -42,10 +42,10 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            duanjl/it-tools:latest
-            duanjl/it-tools:${{ env.RELEASE_VERSION }}
-            ghcr.io/duanjl/it-tools:latest
-            ghcr.io/duanjl/it-tools:${{ env.RELEASE_VERSION}}
+            ${{ secrets.DOCKERHUB_USERNAME }}/it-tools:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/it-tools:${{ env.RELEASE_VERSION }}
+            ghcr.io/${{ steps.repoowner.outputs.lowercase }}/it-tools:latest
+            ghcr.io/${{ steps.repoowner.outputs.lowercase }}/it-tools:${{ env.RELEASE_VERSION}}
 
   github-release:
     runs-on: ubuntu-latest
@@ -93,11 +93,11 @@ jobs:
             ## Docker images
 
             - Docker Hub
-              - `duanjl/it-tools:latest`
-              - `duanjl/it-tools:${{ env.RELEASE_VERSION }}`
+              - `${{ secrets.DOCKERHUB_USERNAME }}/it-tools:latest`
+              - `${{ secrets.DOCKERHUB_USERNAME }}/it-tools:${{ env.RELEASE_VERSION }}`
             - GitHub Container Registry
-              - `ghcr.io/duanjl/it-tools:latest`
-              - `ghcr.io/duanjl/it-tools:${{ env.RELEASE_VERSION}}`
+              - `ghcr.io/${{ steps.repoowner.outputs.lowercase }}/it-tools:latest`
+              - `ghcr.io/${{ steps.repoowner.outputs.lowercase }}/it-tools:${{ env.RELEASE_VERSION}}`
 
             ## Changelog
 
